@@ -48,5 +48,3 @@ Request body :
   "message": ""
 }
 
-git config user.name "Harikrishnan pt"
-git config user.email "harikrishnanpt.work@gmail.com"
