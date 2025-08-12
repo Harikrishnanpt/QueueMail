@@ -43,3 +43,24 @@ Request body :
   "message": "testing"
 }
 
+
+### In production need to install supervisor for managing queues
+
+sudo nano /etc/supervisor/conf.d/queuemail.conf
+
+[program:queuemail]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/html/QueueMail/artisan queue:work database --queue=emails --sleep=3 --tries=3 --timeout=30
+autostart=true
+autorestart=true
+user=www-data
+numprocs=1
+redirect_stderr=true
+stdout_logfile=/var/www/html/QueueMail/storage/logs/laravel-queue.log
+stopwaitsecs=3600
+
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start queuemail:*
+
+
