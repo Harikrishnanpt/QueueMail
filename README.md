@@ -1,6 +1,6 @@
 ## Setup Instructions
 
-import the database queue_mail 
+import the database database_backup/queue_mail
 
 ### 1. Clone the repository
 
